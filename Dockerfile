@@ -1,20 +1,30 @@
-# Utiliser une image Python officielle
-FROM python:3.9-slim
+# Utiliser une image Python légère
+FROM python:3.8-slim
 
 # Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copier le fichier requirements.txt dans le conteneur
+# Copier le fichier des dépendances
 COPY requirements.txt requirements.txt
 
-# Installer les dépendances Python
+# Installer les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copier le contenu de l'application dans le conteneur
-COPY . .
+# Copier les fichiers nécessaires dans l'image Docker
+COPY train.py train.py
+COPY validate.py validate.py
+COPY app.py app.py
+COPY data data
+COPY tests tests
+COPY templates/ templates/
 
-# Exposer le port 5012 pour Flask
+# Exposer le port utilisé par Flask
 EXPOSE 5012
 
-# Définir la commande de démarrage du conteneur
+# Exécuter le script pour entraîner le modèle et générer churn_model_clean.pkl
+RUN python train.py
+
+ENV PYTHONPATH=/app
+
+# Commande pour démarrer l'application Flask
 CMD ["python", "app.py"]
