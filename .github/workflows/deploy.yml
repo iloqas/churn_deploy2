@@ -44,4 +44,4 @@ jobs:
 
     - name: Deploy to Elastic Beanstalk
       run: |
-        eb deploy churn-deploy2
+        eb deploy Churnahmed2-env
