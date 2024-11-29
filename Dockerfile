@@ -12,10 +12,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copier les fichiers nécessaires dans l'image Docker
 COPY train.py train.py
-COPY validate.py validate.py
 COPY app.py app.py
-COPY data data
-COPY tests tests
+COPY DATA DATA
 COPY templates/ templates/
 
 # Exposer le port utilisé par Flask
