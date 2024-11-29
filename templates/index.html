@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction Churn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="number"], button {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prédiction de Churn</h1>
+    <form action="/predict" method="POST">
+        <div class="form-container">
+            <label for="Age">Âge:</label><br>
+            <input type="text" id="Age" name="Age" required><br><br>
+
+            <label for="Account_Manager">Gestionnaire de compte (1 pour oui, 0 pour non):</label><br>
+            <input type="number" id="Account_Manager" name="Account_Manager" required><br><br>
+
+            <label for="Years">Années d'expérience:</label><br>
+            <input type="text" id="Years" name="Years" required><br><br>
+
+            <label for="Num_Sites">Nombre de sites:</label><br>
+            <input type="number" id="Num_Sites" name="Num_Sites" required><br><br>
+
+            <button type="submit">Prédire</button>
+        </div>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h2>Résultat de la Prédiction :</h2>
+        <p>La prédiction de churn est: {{ result }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
