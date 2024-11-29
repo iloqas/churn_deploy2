@@ -19,7 +19,7 @@ COPY templates/ templates/
 # Exposer le port utilisé par Flask
 EXPOSE 5012
 
-# Exécuter le script pour entraîner le modèle et générer churn_model_clean.pkl
+# Exécuter le script pour entraîner le modèle et générer model.pkl
 RUN python train.py
 
 ENV PYTHONPATH=/app
