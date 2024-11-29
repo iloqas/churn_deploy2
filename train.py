@@ -1,6 +1,4 @@
 import pandas as pd
-import statsmodels.api as sm
-from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
 import joblib
 from sklearn.model_selection import train_test_split
