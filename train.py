@@ -6,7 +6,7 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import recall_score
 from sklearn.linear_model import LogisticRegression
-
+ 
 
 def read_data():
     df = pd.read_csv('DATA/customer_churn.csv')
